@@ -13,27 +13,27 @@ function gacha(){
     }
 }
 //2 legendaries
-//3 epics
-//3 rares
-//4 uncommons
-//5 commons
+//2 epics
+//2 rares
+//3 uncommons
+//3 commons
 function common(){
-    var card = Math.floor(Math.random() * 5);
+    var card = Math.floor(Math.random() * 2.99);
     return card;
 }
 function uncommon(){
-    var card = Math.floor(Math.random() * 4);
-    return 5 + card;
+    var card = Math.floor(Math.random() * 2.99);
+    return 3 + card;
 }
 function rare(){
-    var card = Math.floor(Math.random() * 3);
-    return 8 + card;
+    var card = Math.floor(Math.random() * 1.99);
+    return 6 + card;
 }
 function epic(){
-    var card = Math.floor(Math.random() * 3);
-    return 11 + card;
+    var card = Math.floor(Math.random() * 1.99);
+    return 8 + card;
 }
 function legendary(){
-    var card = Math.floor(Math.random() * 2);
-    return 14 + card;
+    var card = Math.floor(Math.random() * 1.99);
+    return 10 + card;
 }
