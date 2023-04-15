@@ -4,7 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 export default function Cat({text}) {
 
-    const [source, setSource] = useState("gray-pixil-frame-0.png");
+    const [source, setSource] = useState("gray-pixil-frame-2.png");
 
     const springs = useSpring({
         from: { opacity: 0 },
@@ -13,19 +13,23 @@ export default function Cat({text}) {
             duration: 500
         }
     })
-
     useEffect(() => {
         const interval = setInterval(() => {
-            if(source == "gray-pixil-frame-0.png") {
-                setSource("gray-pixil-frame-1.png");
-            } else {
+            if (source === "gray-pixil-frame-2.png" || source === "gray-pixil-frame-1.png") {
                 setSource("gray-pixil-frame-0.png");
+            } else {
+                setSource("gray-pixil-frame-1.png");
             }
         }, 250);
-
+    
+        setTimeout(() => {
+            clearInterval(interval);
+            setSource("gray-pixil-frame-2.png");
+        }, 3000);
+    
         return () => clearInterval(interval);
-    }, [source])
-
+    }, [source]);  
+    
     return (
         <animated.div style={{...springs}} className="w-full flex flex-col justify-center items-center">
             <img key={source} src={`cats/${source}`} />
@@ -38,3 +42,5 @@ export default function Cat({text}) {
         </animated.div>
     )
 }
+
+
