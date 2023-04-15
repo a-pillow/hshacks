@@ -96,5 +96,8 @@ export const questions = [
                 text: "I’m here to support you as you try to accomplish those goals!"
             }
         ]
+    },
+    {
+        question: "Thanks for your input!"
     }
 ]

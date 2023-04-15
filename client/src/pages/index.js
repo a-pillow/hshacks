@@ -16,7 +16,9 @@ export default function Home() {
 
   const handle = (id) => {
     save(id);
-    if (index >= questions.length) {
+    if (index >= questions.length - 2) {
+      setShow(false);
+      setIndex(current => current + 1);
       return;
     } else {
       setIndex(current => current + 1);
@@ -28,7 +30,7 @@ export default function Home() {
     <main className=" min-h-screen bg-brand-background">
       <Navbar />
       <div className="text-brand-primary w-full mb-16 text-center font-bold text-3xl">
-        <Cat text={questions[index].question} />
+        <Cat key={questions[index].id} text={questions[index].question} />
       </div>
       {show ? (
           <main className="flex flex-col items-center justify-center">
