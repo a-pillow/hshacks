@@ -22,11 +22,11 @@ export default function Cat({text}) {
                     return "gray-pixil-frame-1.png";
                 }
             })
-        }, 250);    
+        }, 320);    
         setTimeout(() => {
             clearInterval(interval)
             setSource("gray-pixil-frame-2.png");    
-        }, 3000);
+        }, 4200);
 
         return () => {
             clearInterval(interval);

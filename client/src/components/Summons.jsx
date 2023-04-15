@@ -20,7 +20,7 @@ export default function Summons(){
             <div>
                 {changeImage()}
                 <br></br>
-                <button type="button" style={{"background": "#03fc84", "color" : "black"}} onClick={() => changeImage()}>Summon x1</button>
+                <button type="button" style={{"background": "#03fc84", "color" : "black"}} onClick={changeImage}>Summon x1</button>
             </div>
         </main>      
     )
