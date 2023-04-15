@@ -4,22 +4,22 @@ import { TypeAnimation } from 'react-type-animation';
 
 export default function Cat({text}) {
 
-    const [source, setSource] = useState("gray-pixil-frame-0.png");
+    const [source, setSource] = useState("orange-pixil-frame-0.png");
 
     const springs = useSpring({
         from: { opacity: 0 },
         to: { opacity: 1},
         config: {
-            duration: 500
+            duration: 1000
         }
     })
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if(source == "gray-pixil-frame-0.png") {
-                setSource("gray-pixil-frame-1.png");
+            if(source == "orange-pixil-frame-0.png") {
+                setSource("orange-pixil-frame-1.png");
             } else {
-                setSource("gray-pixil-frame-0.png");
+                setSource("orange-pixil-frame-0.png");
             }
         }, 250);
 

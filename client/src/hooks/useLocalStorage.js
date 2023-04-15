@@ -1,23 +1,16 @@
 import { useState, useEffect } from 'react';
 
 export function useLocalStorage(key) {
-    const [value, setValue] = useState(DEFAULT_VALUES);
+    const [value, setValue] = useState([]);
 
     useEffect(() => {
         const stored = localStorage.getItem(key);
-        setValue(stored ? JSON.parse(stored) : DEFAULT_VALUES);
+        setValue(stored ? stored : []);
     }, [key]);
 
     useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(value));
+        localStorage.setItem(key, [...value]);
     }, [key, value]);
 
     return [value, setValue];
 }
-
-const DEFAULT_VALUES = [
-    {
-        date: 1681570277995,
-        mood: "angry"
-    }
-]
