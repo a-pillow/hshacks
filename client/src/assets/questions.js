@@ -97,7 +97,4 @@ export const questions = [
             }
         ]
     },
-    {
-        question: "Thanks for your input!"
-    }
 ]

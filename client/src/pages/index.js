@@ -16,9 +16,8 @@ export default function Home() {
 
   const handle = (id) => {
     save(id);
-    if (index >= questions.length - 2) {
+    if (index >= questions.length - 1) {
       setShow(false);
-      setIndex(current => current + 1);
       return;
     } else {
       setIndex(current => current + 1);
