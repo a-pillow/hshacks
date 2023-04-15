@@ -68,48 +68,6 @@
 				}
 			}
 			
-			function test()
-			{
-				alert("hi");
-			}
-			
-			function pull_once()
-			{
-				rng=Math.random();
-				if(rng<=.70)
-				{
-					num3++;
-					numRolls++;
-				}
-				else if(rng>.70 && rng<0.97)
-				{
-					num4++;
-					numRolls++;
-				}
-				else
-				{
-					num5++;
-					numRolls++;
-				}
-			}
-			
-			function pull_10()
-			{
-				num4++;
-				numRolls++;
-				for(var i=0;i<10;i++)
-				{
-					pull_once();
-				}
-			}
-			
-			function pull_5star()
-			{
-				while(num5==0)
-				{
-					pull_once();
-				}
-			}
 			function displayResult()
 			{
 				document.getElementById("res3").innerHTML=num3;
@@ -117,23 +75,6 @@
 				document.getElementById("res5").innerHTML=num5;
 				document.getElementById("numPulls").innerHTML=numRolls;
 				document.getElementById("priceTotal").innerHTML="You rolled "+numRolls+" times, spending $"+price+"!";
-			}
-			function clear()
-			{
-				num3=0;
-				num4=0;
-				num5=0;
-				numRolls=0;
-				price=0;
-			}
-			function clearResults()
-			{
-				clear();
-				displayResult();
-			}
-			function calcPrice()
-			{
-				price=numRolls*4;
 			}
 			
 		</script>
@@ -164,9 +105,7 @@
 						
 						<table>
 							<tr>
-								<td><button onclick="pull(1)">Summon Once</button></td>
-								<td><button onclick="pull(2)">Summon 10+1</button></td>
-								<td><button onclick="pull(3)">Summon Until 5*</button></td>
+								<td><button onclick="pull(10)">Summon 10</button></td>
 							</tr>
 						</table>
 						
