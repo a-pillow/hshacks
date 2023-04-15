@@ -1,5 +1,4 @@
-catArr = ["brown tabby.png", "orange tabby.png", "Siamese.png", "Munchkin.png", "Persian.png", "Russain Blue.png", "British Shorthair.png", "Maine Coon.png", "bengal.png", "birman.png", "Ragdoll.png", "scottish fold.png"]
-function gacha(){
+export function gacha(){
     var roll = Math.random() * 100;
     if(roll < 40){
         return common();

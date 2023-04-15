@@ -32,8 +32,8 @@ export default function Home() {
 
 
   return (
-    <main className=" min-h-screen bg-brand-background">
-      <Navbar />
+    <main className=" min--screen bg-brand-background">
+      <Navbar />h
       <div className="text-brand-primary w-full mb-16 text-center font-bold text-3xl">
         <Cat text={questions[question].question}/>
       </div>
