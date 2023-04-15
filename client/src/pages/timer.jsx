@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
   
   
-const App = () => {
-  
+export default function App(){
     // We need ref in this, because we are dealing
     // with JS setInterval to keep track of it and
     // stop it when needed
@@ -90,5 +89,5 @@ const App = () => {
         </div>
     )
 }
-  
-export default App;
+
+<div>App</div>
