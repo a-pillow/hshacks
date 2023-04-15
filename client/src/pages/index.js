@@ -27,7 +27,7 @@ export default function Home() {
 
   return (
     <main className=" min--screen bg-brand-background">
-      <Navbar />h
+      <Navbar />
       <div className="text-brand-primary w-full mb-16 text-center font-bold text-3xl">
         <Cat key={questions[index].id} text={questions[index].question} />
       </div>

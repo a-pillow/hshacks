@@ -4,8 +4,8 @@ import { TypeAnimation } from 'react-type-animation';
 import { gacha } from '../backend/gambling.js';
 
 export default function Summons(){
-    const [path, setPath] = useState("");
-    var image = "Empty.png";
+    const [path, setPath] = useState("Empty.png");
+    var image = path;
     const handleClick = () => {
         let final = changeImage();
         setPath(final);
