@@ -4,24 +4,26 @@ import { TypeAnimation } from 'react-type-animation';
 import { gacha } from '../backend/gambling.js';
 
 export default function Summons(){
-
+    const [path, setPath] = useState("");
     var image = "Empty.png";
-
+    const handleClick = () => {
+        let final = changeImage();
+        setPath(final);
+    }
     function changeImage(){
         var roll = gacha();
         image = "cat" + roll + ".png";
-        console.log(image);
-        return <main> <img src={`Summonable Cats/${image}`}/> </main>
+        return image;
     }
 
 
     return (
         <main className="w-full flex flex-col justify-center items-center">
             <div>
-                {changeImage()}
                 <br></br>
-                <button type="button" style={{"background": "#03fc84", "color" : "black"}} onClick={changeImage}>Summon x1</button>
+                    <button type="button" style={{"background": "#03fc84", "color" : "black"}} onClick={() => handleClick()}>Summon x1</button>
             </div>
+            <img src={`Summonable Cats/${path}`} />
         </main>      
     )
 }
