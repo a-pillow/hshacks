@@ -11,8 +11,8 @@ export default function Navbar() {
                 <a href="/statistics" className="px-4 py-1 mx-2 hover:border-brand-primary border-b-2 border-brand-background duration-150 cursor-pointer ">
                     My Statistics
                 </a>
-                <a className="px-4 py-1 mx-2 hover:border-brand-primary border-b-2 border-brand-background duration-150 cursor-pointer ">
-                    Help
+                <a href="/gacha" className="px-4 py-1 mx-2 hover:border-brand-primary border-b-2 border-brand-background duration-150 cursor-pointer ">
+                    Gacha
                 </a>
             </div>
             <button onClick={() => router.push("/")} className="text-lg font-bold border-2 bg-brand-primary px-4 py-1 rounded-lg hover:bg-brand-background hover:border-brand-background hover:-translate-y-[2px] hover:drop-shadow-lg hover:text-brand-primary duration-150  text-brand-background">
