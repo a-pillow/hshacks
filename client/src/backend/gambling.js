@@ -1,4 +1,12 @@
+<<<<<<< HEAD:client/src/backend/gambling.js
 export function gacha(){
+=======
+catArr = ["brown tabby.png", "orange tabby.png", 
+"Siamese.png", "Munchkin.png", "Persian.png", "Russain Blue.png", 
+"British Shorthair.png", "Maine Coon.png", 
+"bengal.png", "birman.png", "Ragdoll.png", "scottish fold.png"]
+function gacha(){
+>>>>>>> f89ccf030e5144936514e6d7e19a21aee5d9184f:client/src/back end stuff/gambling.js
     var roll = Math.random() * 100;
     if(roll < 40){
         return common();
