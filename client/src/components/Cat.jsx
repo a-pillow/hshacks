@@ -21,14 +21,13 @@ export default function Cat({text}) {
                 setSource("gray-pixil-frame-1.png");
             }
         }, 250);
-    
-        setTimeout(() => {
+        setTimeout(() => {  
+            setSource("gray-pixil-frame-2.png")
             clearInterval(interval);
-            setSource("gray-pixil-frame-2.png");
-        }, 3000);
-    
+        }, 1000);
         return () => clearInterval(interval);
-    }, [source]);  
+       
+    }, [source]);
     
     return (
         <animated.div style={{...springs}} className="w-full flex flex-col justify-center items-center">
