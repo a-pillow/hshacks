@@ -1,11 +1,10 @@
-import { useLocalStorage } from '@/hooks/useLocalStorage';
-import Navbar from '../components/Navbar';
-import Summons from '../components/Summons';
-import { useEffect, useState } from 'react';
-import { animated, useSpring } from '@react-spring/web'
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import Navbar from "../components/Navbar";
+import Summons from "../components/Summons";
+import { useEffect, useState } from "react";
+import { animated, useSpring } from "@react-spring/web";
 
 export default function Gacha() {
-
   return (
     <main className=" min--screen bg-brand-background">
       <Navbar />
@@ -13,5 +12,7 @@ export default function Gacha() {
         <Summons />
       </div>
     </main>
-  )
+  );
 }
+
+//I think this was John's thing. Was it?
