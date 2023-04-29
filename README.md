@@ -1,4 +1,4 @@
-#Project Repository for HSHacks 2023
+# Project Repository for HSHacks 2023
 
 ## Getting Started
 
