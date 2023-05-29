@@ -15,33 +15,46 @@ export default function Cat({ text }) {
     from: { opacity: 0 },
     to: { opacity: 1 },
     config: {
-      duration: 500,
+      duration: 1000,
     },
   });
 
   //On page load, set an interval to animate the cat
-  useEffect(() => {
+  
+    useEffect(() => {
+    var counter = 0;
     const interval = setInterval(() => {
-      setSource((cur) => {
-        if (
-          cur === "gray-pixil-frame-2.png" ||
-          cur === "gray-pixil-frame-1.png"
-        ) {
-          return "gray-pixil-frame-0.png";
-        } else {
-          return "gray-pixil-frame-1.png";
-        }
-      });
-    }, 320);
-    setTimeout(() => {
-      clearInterval(interval);
-      setSource("gray-pixil-frame-2.png");
-    }, 4200);
+      setTimeout(() => {
+        
+          setSource((cur) => {
+          if (
+            cur === "gray-pixil-frame-2.png" ||
+            cur === "gray-pixil-frame-1.png"
+          ) {
+            return "gray-pixil-frame-0.png";
+          } else {
+            
+            return "gray-pixil-frame-1.png";
+          }
+        });
+    },100)
+     
+    }, 325);
 
+    setTimeout(() => {
+      setSource("gray-pixil-frame-2.png");
+      clearInterval(interval)
+      
+      
+    }, 5000);
+   
     return () => {
-      clearInterval(interval);
+      clearInterval(interval)
+      setSource("gray-pixil-frame-2.png");
     };
   }, []);
+
+
 
   return (
     <animated.div
