@@ -19,13 +19,14 @@ export default function Cat({ text }) {
     },
   });
 
+  
   //On page load, set an interval to animate the cat
   
     useEffect(() => {
     var counter = 0;
     const interval = setInterval(() => {
       setTimeout(() => {
-        
+
           setSource((cur) => {
           if (
             cur === "gray-pixil-frame-2.png" ||
@@ -43,13 +44,11 @@ export default function Cat({ text }) {
 
     setTimeout(() => {
       setSource("gray-pixil-frame-2.png");
-      clearInterval(interval)
-      
-      
-    }, 5000);
+      clearInterval(interval);
+    }, 4500);
    
     return () => {
-      clearInterval(interval)
+      clearInterval(interval);
       setSource("gray-pixil-frame-2.png");
     };
   }, []);
