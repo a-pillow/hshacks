@@ -1,15 +1,15 @@
 import { animated, useSpring } from "@react-spring/web";
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { TypeAnimation } from "react-type-animation";
-
-/*
-    Notes: this shit was super super messy. since I was rushing, the code is essentially duck 
-    taped together and fragile
-*/
-
-export default function Cat({ text }) {
-  const [source, setSource] = useState("gray-pixil-frame-2.png");
-
+import React from "react"
+import ReactDOM from "react-dom"
+export default function Cat({ text, questions, index }) {
+  const [source, setSource] = useState(0);
+  const frameId = React.useRef(null);
+  const prevTimer = useRef(null)
+  const startTimer = useRef(null)
+  const images = ['gray-pixil-frame-1.png', 'gray-pixil-frame-0.png', 'gray-pixil-frame-2.png']
+  const result = images[Math.round(source)]
   //Fade in animation
   const springs = useSpring({
     from: { opacity: 0 },
@@ -19,39 +19,36 @@ export default function Cat({ text }) {
     },
   });
 
-  
-  //On page load, set an interval to animate the cat
-  
-    useEffect(() => {
-    var counter = 0;
-    const interval = setInterval(() => {
-      setTimeout(() => {
-
-          setSource((cur) => {
-          if (
-            cur === "gray-pixil-frame-2.png" ||
-            cur === "gray-pixil-frame-1.png"
-          ) {
-            return "gray-pixil-frame-0.png";
-          } else {
-            
-            return "gray-pixil-frame-1.png";
-          }
-        });
-    },100)
-     
-    }, 325);
-
-    setTimeout(() => {
-      setSource("gray-pixil-frame-2.png");
-      clearInterval(interval);
-    }, 4500);
-   
-    return () => {
-      clearInterval(interval);
-      setSource("gray-pixil-frame-2.png");
-    };
-  }, []);
+  const animate = useCallback(timer => {
+    if(startTimer.current === null) startTimer.current = timer;
+    const t = timer - startTimer.current
+    if (t <= 5000) {
+      if (prevTimer.current !== null && startTimer.current !== null) {
+        const iteration = t - prevTimer.current;
+        setSource(
+          (prevCount =>
+            (prevCount + iteration * 0.002) % 1)
+        )
+        console.log("speed")
+      }
+      prevTimer.current = t;
+      frameId.current = requestAnimationFrame(animate);
+    }
+    else if (t > 5000) {
+      setSource(2)
+    }
+  }, [])
+  const startAnimation = useCallback(() =>{
+    setSource(0)
+    cancelAnimationFrame(frameId.current)
+    prevTimer.current = null;
+    startTimer.current = null;
+    frameId.current = requestAnimationFrame(animate)
+  },[animate])
+  React.useEffect(() => {
+    startAnimation();
+    return() => cancelAnimationFrame(frameId.current)
+  }, [startAnimation])
 
 
 
@@ -60,11 +57,14 @@ export default function Cat({ text }) {
       style={{ ...springs }}
       className="w-full h-[100px] flex flex-col justify-center items-center"
     >
-      <img key={source} src={`cats/${source}`} />
+      <img key={result} src={`cats/${result}`} />
       <h1 className="text-black -translate-y-8">^</h1>
       <animated.div className="border-black border-2 text-black rounded-full py-2 px-4">
-        <TypeAnimation sequence={[1000, text]} cursor={false} />
+        <TypeAnimation sequence={[100, text]} cursor={false} />
       </animated.div>
     </animated.div>
   );
 }
+
+
+  

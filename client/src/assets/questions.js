@@ -5,11 +5,23 @@ export const questions = [
     answers: [
       {
         id: 0,
-        text: "Not connected at all, I want to break off all my relationships.",
+        text: "1",
       },
       {
         id: 1,
-        text: "The people around me are the most supportive I could ask for.",
+        text: "2",
+      },
+      {
+        id: 2,
+        text: "3",
+      },
+      {
+        id: 3,
+        text: "4",
+      },
+      {
+        id: 4,
+        text: "5",
       },
     ],
 
