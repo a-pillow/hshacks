@@ -7,6 +7,24 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        openmenu:  'openmenu 0.7s ease-in',
+        closemenu:  'closemenu 0.7s ease-in',
+    },
+    keyframes: {
+        openmenu: {
+        // initial position
+            '0%': {left:  '-350px'},
+        // final position
+            '100%': {left:  '0px'}
+        },
+        closemenu: {
+        // initial position
+            '0%': {left:  '0px'},
+        // final position
+            '100%': {left:  '-350px'}
+        },
+    },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -20,6 +38,9 @@ module.exports = {
           tertiary: "#134074",
         },
       },
+      margin: {
+        '5px': '5px',
+      }
     },
     fontFamily: {
       lexend: "Lexend Deca, sans-serif",

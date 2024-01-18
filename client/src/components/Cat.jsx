@@ -2,14 +2,20 @@ import { animated, useSpring } from "@react-spring/web";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { TypeAnimation } from "react-type-animation";
 import React from "react"
-import ReactDOM from "react-dom"
-export default function Cat({ text, questions, index }) {
+export default function Cat({text, imageArray}) {
+  //Calculating animation time section 
+  const length = text.length;
+  const spaceCount = (text.split(" ").length - 1);
+  const rate =  15.74 //words per second from type animation of speed 40 calculated through experimentation
+  const ratio = 1.23 //Ratio of the timer seconds to real time seconds
+  const totalAnimationTime = (length + spaceCount)/rate
+  const adjustedTime = totalAnimationTime/ratio
+
   const [source, setSource] = useState(0);
   const frameId = React.useRef(null);
   const prevTimer = useRef(null)
   const startTimer = useRef(null)
-  const images = ['gray-pixil-frame-1.png', 'gray-pixil-frame-0.png', 'gray-pixil-frame-2.png']
-  const result = images[Math.round(source)]
+  const result = imageArray[Math.round(source)]
   //Fade in animation
   const springs = useSpring({
     from: { opacity: 0 },
@@ -19,23 +25,25 @@ export default function Cat({ text, questions, index }) {
     },
   });
 
+  
   const animate = useCallback(timer => {
     if(startTimer.current === null) startTimer.current = timer;
     const t = timer - startTimer.current
-    if (t <= 5000) {
+    if (t <= adjustedTime * 1000) {
       if (prevTimer.current !== null && startTimer.current !== null) {
         const iteration = t - prevTimer.current;
         setSource(
           (prevCount =>
-            (prevCount + iteration * 0.002) % 1)
+            (prevCount + iteration * 0.0022) % 1)
         )
-        console.log("speed")
       }
       prevTimer.current = t;
       frameId.current = requestAnimationFrame(animate);
     }
-    else if (t > 5000) {
-      setSource(2)
+    else if (t > adjustedTime * 1000) {
+        setTimeout(() =>{
+          setSource(2)
+        }, 150)
     }
   }, [])
   const startAnimation = useCallback(() =>{
@@ -59,8 +67,8 @@ export default function Cat({ text, questions, index }) {
     >
       <img key={result} src={`cats/${result}`} />
       <h1 className="text-black -translate-y-8">^</h1>
-      <animated.div className="border-black border-2 text-black rounded-full py-2 px-4">
-        <TypeAnimation sequence={[100, text]} cursor={false} />
+      <animated.div className="border-black border-2 text-black rounded-full py-2 px-4 mb-4">
+        <TypeAnimation sequence={[100, text]} cursor={false} speed = {40} style={{ fontSize:'0.875em', padding: '10px'}}/>
       </animated.div>
     </animated.div>
   );

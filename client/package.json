@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-spring/web": "^9.7.2",
+    "ag-charts-react": "^9.0.1",
     "autoprefixer": "10.4.14",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
